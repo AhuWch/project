@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>快速构建初级前端知识体系</title>
+</head>
+<style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: rgb(242, 242, 242);
+    }
+
+    /* * {
+        border: 1px solid black;
+      } */
+    .flex {
+      display: flex;
+    }
+
+    .col {
+      flex-direction: column;
+    }
+
+    .beijing {
+      background-color: aqua;
+    }
+
+    /* 以下为导航栏 */
+    .toptab1 {
+      height: 70px;
+      background-color: rgb(2, 0, 63);
+    }
+
+    .toptab2 {
+      height: 50px;
+      background-color: white;
+    }
+
+    .tabli {
+      line-height: 4;
+      margin-left: 10px;
+      margin-right: 10px;
+      color: rgb(196, 196, 196);
+    }
+
+    .tabtitle {
+      margin-left: 10px;
+      margin-right: 50px;
+      padding-top: 10px;
+      font: normal 700 30px "Microsoft Yahei";
+    }
+
+    .tabimg {
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+      margin-top: 15px;
+      margin-left: 50px;
+    }
+
+    .tabvipimg {
+      list-style-type: none;
+      margin-left: 10px;
+      margin-right: 10px;
+      max-width: 130px;
+      vertical-align: middle;
+      margin-left: 20px;
+    }
+
+    .tabli a {
+      text-decoration: none;
+      color: rgb(249, 249, 249);
+    }
+
+    .tabsec a {
+      text-decoration: none;
+      color: rgb(122, 122, 122);
+    }
+
+    .tabtitle a{
+      text-decoration: none;
+      color: rgb(255, 255, 255);
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .tabli a:hover {
+      color: rgb(255, 238, 187);
+    }
+
+    .tabsecdiv {
+      padding-left: 250px;
+      border-top: 1px solid rgba(208, 208, 208, 0.473);
+      padding-top: 20px;
+      border-bottom: 1px solid rgb(235, 235, 235);
+      padding-bottom: 20px;
+      box-shadow: 2px 3px 10px rgba(241, 241, 241, 0.353);
+      background-color: white;
+    }
+
+    .tabsec {
+      margin-left: 10px;
+    }
+
+    .tabsec a:hover {
+      color: rgb(79, 114, 255);
+    }
+
+  .head {
+    position: fixed;
+    height: 5rem;
+    width: 100%;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    /* 一直将导航栏置于最顶层 */
+    background-color: white;
+    /* 设置导航栏背景颜色 */
+  }
+
+  /* 以上为导航栏 */
+
+  /* 以下为搜索栏 */
+  form {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  .searchbox {
+    position: relative;
+    width: 185px;
+    margin: 0 auto;
+  }
+
+  input,
+  button {
+    border: none;
+    outline: none;
+  }
+
+  input {
+    width: 100%;
+    height: 35px;
+    padding-left: 13px;
+  }
+
+  button {
+    height: 35px;
+    width: 4px;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 30px;
+  }
+
+  .bar input {
+    border: 2px solid #007fff;
+    border-radius: 5px;
+    background: transparent;
+    top: 0;
+    right: 0;
+  }
+
+  .bar button {
+    background: #007fff;
+    border-radius: 0 5px 5px 0;
+    width: 60px;
+    top: 0;
+    right: 0;
+    margin-top: 16px;
+  }
+
+  .bar button:before {
+    content: "搜索";
+    font-size: 13px;
+    color: #f9f0da;
+  }
+
+  /* 以上为搜索栏 */
+
+  /* 以下创作者中心 */
+  .authorCenter {
+    width: 100px;
+    height: 39px;
+    margin-top: 14px;
+    background-color: #007fff;
+    color: white;
+    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    line-height: 40px;
+    margin-right: 0;
+  }
+
+  .authorCenterBtn {
+    width: 20px;
+    height: 39px;
+    margin-top: 14px;
+    background-color: #007fff;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+    border-left: 1px solid rgba(215, 229, 255, 0.428);
+  }
+
+  /* 以上创作者中心 */
+
+  /* 以下内容区 */
+  .mgt160 {
+    margin-top: 160px;
+  }
+
+  .bgd_white {
+    background-color: white;
+  }
+
+  .neirongdiv {
+    margin-top: 160px;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: auto;
+    padding-bottom: 50px;
+  }
+
+  .wenZhang {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 100%;
+  }
+
+  .wenzhangneirong {
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .zuozhelv {
+    width: 35px;
+    margin-left: 10px;
+  }
+
+  .xinXi {
+    margin-left: 15px;
+  }
+
+  .wenZhangXinXi {
+    color: gray;
+    margin-top: 10px;
+  }
+
+  .mgt5 {
+    margin-top: 5px;
+  }
+
+  /* 以下侧边栏 */
+
+  .cebian {
+    width: 800px;
+    margin-left: 10px;
+  }
+
+  .cebianxinxi {
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 220px;
+    background-color: white;
+  }
+
+  /* 侧边按钮 */
+  .cebiananniu {
+    margin-top: 15px;
+    justify-content: center;
+  }
+
+  #guanZhu {
+    background-color: #1d7dfa;
+    color: white;
+    width: 110px;
+    border-radius: 3px;
+    margin-right: 4px;
+  }
+
+  #siXin {
+    background-color: rgb(30, 128, 255, 0.05);
+    color: #1d7dfa;
+    width: 110px;
+    border: 1px solid #1d7dfa;
+    border-radius: 3px;
+    margin-left: 4px;
+  }
+
+  /* 侧边点赞、阅读数 */
+  .zandu {
+    color: #5a5a5a;
+    margin-top: 2px;
+    font-size: 14px;
+  }
+
+  /* 相关文章 */
+  .xiangguan {
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+  }
+
+  .xiangguanlianjie a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+  }
+
+  .mululianjie a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+  }
+
+  .xiangguanlianjie a:hover {
+    color: #1d7dfa;
+  }
+
+  .zanping {
+    font-size: 12px;
+    color: rgb(98, 98, 98);
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+
+  /* 目录 */
+  .mulu {
+    padding: 20px;
+    margin-top: 20px;
+    background-color: white;
+  }
+
+  .mululianjie {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .mululianjie a:hover {
+    background-color: rgb(244, 244, 244);
+  }
+  h2{
+    margin-top: 80px;
+  }
+
+      /* 以下移动端适配 */
+      @media (max-width: 1000px) {
+      .cebiandiv {
+        display: none;
+      }
+      .authorCenter {
+        display: none;
+      }
+      .authorCenterBtn {
+        display: none;
+      }
+      .huiyuan{
+        display: none;
+      }
+      .caidan1{
+        display: none;
+      }
+      .cebian{
+        display: none;    
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .tabsecdiv{
+        padding-left: 0px;
+      }
+      .bar{
+        display: none;
+      }
+    }
+</style>
+</head>
+
+<body>
+    <!-- 顶部全部吸顶区域 -->
+    <div class="head">
+      <!-- 顶部菜单栏第一层 -->
+      <div class="toptab1 flex">
+        <!-- icon区域 -->
+        <img src="https://p3-passport.byteimg.com/img/user-avatar/6eae74de70611ae14a464a5bbfa2ca44~100x100.awebp" alt=""
+          class="tabimg" />
+        <span class="tabtitle"><a href="">厚土掘银</a></span>
+        <!-- 顶部菜单栏第一层tab -->
+        <div class="flex">
+          <li class="tabli">
+            <a href="index.html"><span>首页</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>沸点</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>课程</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>直播</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>活动</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>竞赛</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>商城</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>应用</span></a>
+          </li>
+          <li class="tabli caidan1">
+            <a href="index.html"><span>插件</span></a>
+          </li>
+          <!-- 会员五折活动 -->
+          <li class="tabli huiyuan">
+            <a href="index.html"><img class="tabvipimg"
+                src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7482b3ad2cd14edda31f05399c2ae759~tplv-k3u1fbpfcp-zoom-1.image"
+                alt="" /></a>
+          </li>
+          <!-- 搜索栏 -->
+          <li class="tabli">
+            <div class="bar">
+              <form>
+                <input placeholder="欢迎开始探索" name="cname" type="text" class="searchbox" />
+                <button type="submit" class="btn"></button>
+              </form>
+            </div>
+          </li>
+          <!-- 创作者中心 -->
+          <li class="tabli authorCenter">
+            <a href="index.html" style="color: white">创作者中心</a>
+          </li>
+          <li class="tabli authorCenterBtn">
+            <svg width="15" height="36" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2.45025 4.82383C2.17422 4.49908 2.40501 4 2.83122 4H9.16878C9.59499 4 9.82578 4.49908 9.54975 4.82382L6.38097 8.5518C6.1813 8.7867 5.8187 8.7867 5.61903 8.5518L2.45025 4.82383Z"
+                fill="white"></path>
+            </svg>
+          </li>
+        </div>
+      </div>
+      <!-- 顶部菜单栏第二层tab -->
+      <div class="flex tabsecdiv">
+        <li class="tabsec">
+          <a href="index.html"><span>综合</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>后端</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>前端</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>Android</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>iOS</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>人工智能</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>代码人生</span></a>
+        </li>
+        <li class="tabsec">
+          <a href="index.html"><span>阅读</span></a>
+        </li>
+      </div>
+    </div>
+  <!-- 内容区 -->
+  <div class="flex mgt160 neirongdiv">
+    <!-- 左侧详情区 -->
+    <div class="flex col bgd_white wenZhang">
+      <!-- 标题 -->
+      <div>
+        <h1>快速构建初级前端知识体系</h1>
+      </div>
+      <!-- 文章信息：作者、发布时间、阅读量 -->
+      <div class="flex ">
+        <!-- 头像 -->
+        <div><img src="https://p3-passport.byteimg.com/img/user-avatar/0d8af8d13eb8a8af305cd6133d64d13b~100x100.awebp"
+            alt="" style="
+            width: 60px;
+            height: 60px;
+            border-radius: 100%;">
+        </div>
+        <!-- 作者信息区 -->
+        <div class="flex col xinXi">
+          <!-- 作者名字、作者等级 -->
+          <div class="flex mgt5">
+            <!-- 作者名字 -->
+            <div>我是希德Sid</div>
+            <!-- 作者等级 -->
+            <div><img src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/lv-4.a78c420.png" alt=""
+                class="zuozhelv" /></div>
+          </div>
+          <!-- 文章信息 -->
+          <div class="flex wenZhangXinXi">
+            <!-- 发布时间 -->
+            <div class="flex">2023年12月21日 14:20</div>
+            <!-- 间隔点 -->
+            <div class="flex">·</div>
+            <!-- 阅读量 -->
+            <div class="flex">阅读</div>
+            <div class="flex">3519</div>
+          </div>
+        </div>
+      </div>
+      <!-- 文章内容区 -->
+      <div class="flex col">
+        <!-- 封面图 -->
+        <div><img
+            src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/26f8803db63f4042a76c8e46151d6254~tplv-k3u1fbpfcp-zoom-crop-mark:3024:3024:3024:1702.awebp?"
+            alt="" style="width: 100%; margin-top: 20px;"></div>
+        <!-- 正文 -->
+        <div class="wenzhangneirong" style="margin-top: 30px;">
+          <h2 id="dongji">动机</h2>
+          <p>为什么程序员要学习英语</p>
+          <li>工作：我们每天接触的代码都是英文的、包括很多技术文档也是英文的</li>
+          <li>学习：最新最前沿的技术最开始都是只有English版本</li>
+          <li>就业：学好英语让你的就业范围扩大到全球，而不只限于国内</li>
+          <h2 id="mubiao">目标</h2>
+          <p>读： 流畅的阅读英文文档、英文论坛。</p>
+          <p>写： 可以简单的写一些英文的Issue、Readme等。</p>
+          <h2 id="APP">借助 APP</h2>
+          <p>反复练习，强化记忆。</p>
+          <p>墨墨背单词是根据艾宾浩斯遗忘曲线的算法打造的高效抗遗忘，精准规划海量记忆的一款APP. </p>
+          <p>可以将不会的单词记录下到墨墨里就可以做到反复练习，强化记忆了。</p>
+          <p>安卓、IOS都支持。</p>
+          <h2 id="yingshiju">借助影视剧</h2>
+          <ol>老友记</ol>
+          <ol>摩登家庭</ol>
+          <ol>绝望主妇</ol>
+          <ol>..（根据自己爱好选择）</ol>
+          <h2 id="yuedu">阅读提升</h2>
+          <p>Vue、React、Node官方文档都可以，除此之外可以看看其他的技术网站。</p>
+          <p>如果你比较关注实时新闻的话，不妨多看看这些。</p>
+          <p>没事刷刷美剧、看看英文论坛、新闻，然后将不会的单词在墨墨中反复练习。
+            然后经常逛逛Dev、StackOverflow等论坛，即可增加技术能力也可以熟悉学习英文。
+            再比如写中文文章写出来后尝试用英语也写一遍等等。
+            也可以和同学、朋友、网友一起尝试用英文沟通，如果有认识外国人(最近很火的chatGPT也可以)沟通就更好了。
+          <h2 id="zongjie">总结一下，大概的方法：</h2>
+          <ol>
+            <li>多看英文文档、论坛</li>
+            <li>多使用英语交流、写作</li>
+            <li>观看英语电影，电视和新闻</li>
+            <li>使用英语学习软件和网站</li>
+            <li>加入英语学习小组或找英语学习伙伴一起学习</li>
+          </ol>
+          <h4>最后，关键在于持之以恒。</h4>
+        </div>
+      </div>
+    </div>
+    <!-- 右侧侧边栏 -->
+    <div class="flex col cebian">
+      <!-- 侧边作者信息区和按钮 -->
+      <div class="flex col cebianxinxi">
+        <!-- 侧边作者信息区 -->
+        <div class="flex">
+          <!-- 头像 -->
+          <div><img src="https://p3-passport.byteimg.com/img/user-avatar/0d8af8d13eb8a8af305cd6133d64d13b~100x100.awebp"
+              alt="" style="
+              width: 55px;
+              height: 55px;
+              border-radius: 100%;">
+          </div>
+          <!-- 侧边作者文字信息 -->
+          <div class="flex col xinXi">
+            <!-- 作者名字、作者等级 -->
+            <div class="flex mgt5">
+              <!-- 作者名字 -->
+              <div>我是希德Sid</div>
+              <!-- 作者等级 -->
+              <div><img src="https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/img/lv-4.a78c420.png" alt=""
+                  class="zuozhelv" /></div>
+            </div>
+            <!-- 侧边岗位、地区信息 -->
+            <div class="flex mgt5">
+              <!-- 岗位 -->
+              <div class="flex">前端小白</div>
+              <!-- @ -->
+              <div class="flex">@</div>
+              <!-- 地区 -->
+              <div class="flex">杭州</div>
+            </div>
+          </div>
+        </div>
+        <!-- 侧边作者按钮区：关注、私信 -->
+        <div class="flex cebiananniu">
+          <div>
+            <input type="button" value="关注" id="guanZhu">
+          </div>
+          <div>
+            <input type="button" value="私信" id="siXin">
+          </div>
+        </div>
+        <!-- 侧边横线 -->
+        <div
+          style="width: 100%; border-bottom: 1px solid rgba(234, 234, 234, 0.387); margin-top: 20px; margin-bottom: 20px;">
+        </div>
+        <!-- 侧边点赞、阅读数 -->
+        <div class="zandu"><span>获得点赞</span> <span>289</span></div>
+        <div class="zandu"><span>文章被阅读</span> <span>16522</span></div>
+      </div>
+
+      <!-- 相关文章区 -->
+      <div class="flex col xiangguan">
+        <!-- “相关文章” 固定文字 -->
+        <div>相关文章</div>
+        <!-- 侧边横线 -->
+        <div
+          style="width: 100%; border-bottom: 1px solid rgba(234, 234, 234, 0.387); margin-top: 20px; margin-bottom: 20px;">
+        </div>
+        <!-- 相关文章列表 -->
+        <div>
+          <!-- 相关文章单个列表 -->
+          <div>
+            <!-- 相关文章单个列表-标题 -->
+            <div class="xiangguanlianjie"><a href="">前端 UI 组件库有哪些选择（收藏级，小白必看！）</a></div>
+            <!-- 相关文章单个列表-点赞、评论 -->
+            <div class="zanping"><span>21</span><span>点赞</span><span> · </span><span>38</span><span>评论</span></div>
+          </div>
+          <!-- 相关文章单个列表 -->
+          <div>
+            <!-- 相关文章单个列表-标题 -->
+            <div class="xiangguanlianjie"><a href="">浅聊在 uni-app 中如何选择一个合适的 UI 组件库</a></div>
+            <!-- 相关文章单个列表-点赞、评论 -->
+            <div class="zanping"><span>65</span><span>点赞</span><span> · </span><span>14</span><span>评论</span></div>
+          </div>
+          <!-- 相关文章单个列表 -->
+          <div>
+            <!-- 相关文章单个列表-标题 -->
+            <div class="xiangguanlianjie"><a href="">高颜值UI组件库，快来做一个有美感的优质前端</a></div>
+            <!-- 相关文章单个列表-点赞、评论 -->
+            <div class="zanping"><span>80</span><span>点赞</span><span> · </span><span>7</span><span>评论</span></div>
+          </div>
+          <!-- 相关文章单个列表 -->
+          <div>
+            <!-- 相关文章单个列表-标题 -->
+            <div class="xiangguanlianjie"><a href="">uni-app的开发经历</a></div>
+            <!-- 相关文章单个列表-点赞、评论 -->
+            <div class="zanping"><span>213</span><span>点赞</span><span> · </span><span>74</span><span>评论</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 目录区域 -->
+      <div class="flex col mulu">
+        <!-- “目录” 固定文字 -->
+        <div>目录</div>
+        <!-- 侧边横线 -->
+        <div
+          style="width: 100%; border-bottom: 1px solid rgba(234, 234, 234, 0.387); margin-top: 20px; margin-bottom: 20px;">
+        </div>
+        <!-- 目录列表 -->
+        <div>
+          <!-- 目录单个 -->
+          <div class="mululianjie"><a href="#APP" style="display: block; padding-top: 5px; padding-bottom: 5px;">目标</a>
+          </div>
+          <div class="mululianjie"><a href="#yingshiju"
+              style="display: block; padding-top: 5px; padding-bottom: 5px;">借助APP</a></div>
+          <div class="mululianjie"><a href="#yuedu"
+              style="display: block; padding-top: 5px; padding-bottom: 5px;">借助影视剧</a></div>
+          <div class="mululianjie"><a href="#zongjie"
+              style="display: block; padding-top: 5px; padding-bottom: 5px;">阅读提升</a></div>
+          <div class="mululianjie"><a href="#"
+              style="display: block; padding-top: 5px; padding-bottom: 5px;">总结一下，大概的方法：</a></div>
+        </div>
+      </div>
+      <script>
+        // 1. 
+      </script>
+
+</body>
+</html>
